@@ -49,7 +49,7 @@ join: date_month_dim {
 join: axial_admin_fact {
   type: left_outer
   sql_on:  ${npi_member_reference.npi} = ${axial_admin_fact.npi}
-  and     ${npi_member_reference.yrmo} = ${axial_admin_fact.completion_yrmo}yrmo};;
+  and     ${npi_member_reference.yrmo} = ${axial_admin_fact.completion_yrmo};;
 relationship: many_to_many
 }
 

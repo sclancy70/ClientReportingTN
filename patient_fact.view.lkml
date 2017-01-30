@@ -119,7 +119,7 @@ view: patient_fact {
 
   dimension: monthly_spend {
     type: number
-    sql:cast( ${TABLE}.monthly_spend as integer);;
+    sql: ${TABLE}.monthly_spend ;;
   }
 
   dimension: pharm_label {
