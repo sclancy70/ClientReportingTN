@@ -22,10 +22,27 @@ view: patient_fact {
     sql: ${TABLE}.duration_label ;;
   }
 
-  dimension: coverage_effective_date {
-    type: string
-    sql: ${TABLE}.effective_date ;;
+  dimension: effective_date {
+    hidden:  yes
+    type: date
+    sql: cast( ${TABLE}.effective_date as date) ;;
   }
+
+
+
+
+  dimension_group: coverage_effective_date {
+    type: time
+    timeframes: [date, week, month, year]
+    convert_tz: no
+    sql: ${effective_date} ;;
+  }
+
+
+
+
+
+
 
   dimension: eligible_flag {
     type: string

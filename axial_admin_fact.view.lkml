@@ -61,7 +61,7 @@ view: axial_admin_fact {
 
   dimension_group: schedule {
     type: time
-    timeframes: [date, week, month]
+    timeframes: [date, week, month,year]
     convert_tz: no
     sql: ${TABLE}.schedule_date ;;
   }

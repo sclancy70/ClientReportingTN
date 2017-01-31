@@ -67,10 +67,10 @@ view: npi_fact {
     sql: ${TABLE}.multi_pharmacy ;;
   }
 
-  dimension: multiprescriber {
-    type: string
-    sql: ${TABLE}.multiprescriber ;;
-  }
+  #dimension: multiprescriber {
+   # type: string
+  #  sql: ${TABLE}.multiprescriber ;;
+  #}
 
   dimension: ndccnt {
     type: string
@@ -82,10 +82,10 @@ view: npi_fact {
     sql: ${TABLE}.ndcperpt ;;
   }
 
-  dimension: noncontinuity {
-    type: string
-    sql: ${TABLE}.noncontinuity ;;
-  }
+  #dimension: noncontinuity {
+   # type: string
+   # sql: ${TABLE}.noncontinuity ;;
+  #}
 
   dimension: npi {
     hidden: yes
