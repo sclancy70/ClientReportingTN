@@ -3,7 +3,7 @@ view: npi_fact {
 
   dimension: app_percentile {
     type: number
-    sql: cast(${TABLE}.app_percentile as integer) ;;
+    sql: cast(${TABLE}.app_percentile as decimal) ;;
   }
 
   dimension: app_qtr_score {
@@ -16,12 +16,13 @@ view: npi_fact {
     sql: ${TABLE}.app_report_flag ;;
   }
 
-  dimension: app_score_raw {
+  dimension: app_monthly_score {
+
     type: number
     sql: ${TABLE}.app_score_raw  ;;
   }
 
-  dimension: asshort_long_acting {
+  dimension: short_long_acting {
     type: string
     sql: ${TABLE}.asshort_long_acting ;;
   }

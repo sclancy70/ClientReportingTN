@@ -2,7 +2,7 @@ view: npi_dim {
   sql_table_name: reporting.npi_address_dim ;;
 
   dimension: npi {
-    hidden: yes
+
     type: string
     sql: ${TABLE}.npi ;;
   }

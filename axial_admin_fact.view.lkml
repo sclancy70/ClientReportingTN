@@ -9,6 +9,7 @@ view: axial_admin_fact {
   }
 
   dimension: completion_yrmo {
+    hidden: yes
     type: string
     sql: ${TABLE}.completion_yrmo ;;
   }
@@ -24,6 +25,7 @@ view: axial_admin_fact {
   }
 
   dimension: intervention_rim_yrmo {
+    hidden: yes
     type: string
     sql: ${TABLE}.intervention_rim_yrmo ;;
   }
@@ -34,6 +36,7 @@ view: axial_admin_fact {
   }
 
   dimension: npi {
+    hidden: yes
     type: string
     sql: ${TABLE}.npi ;;
   }
@@ -64,9 +67,21 @@ view: axial_admin_fact {
   }
 
   dimension: schedule_yrmo {
+    hidden: yes
     type: string
     sql: ${TABLE}.schedule_yrmo ;;
   }
+
+
+
+  measure: distinct_count_of_records {
+    type: number
+    sql:count (distinct ${TABLE}.npi);;
+    drill_fields: [provider_name, provider_group_name]
+
+  }
+
+
 
   measure: count_of_records {
     type: number
