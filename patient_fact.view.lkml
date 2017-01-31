@@ -299,7 +299,12 @@ measure: Count_Behavioral_Patients {
   }
 
 
-
+  measure: Count_Patients {
+    type: number
+    sql:count(distinct ${axial_member_id} );;
+    value_format_name: decimal_0
+    drill_fields: [axial_member_id,patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
+  }
 
 
   measure: Total_Monthly_Spend {

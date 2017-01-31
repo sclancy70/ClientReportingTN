@@ -13,9 +13,7 @@ view: patient_phi_dim {
       load_date,
       row_number() over (partition by axial_member_id order by termination_date desc) primary_flag
       FROM public.eligibility_cur
-      where load_date =
-      (select max(load_date)
-      FROM public.eligibility_cur)
+
        ;;
   }
 
