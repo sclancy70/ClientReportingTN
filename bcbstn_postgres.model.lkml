@@ -29,21 +29,16 @@ explore: npi_member_reference {
     relationship: many_to_many
   }
 
-
 join:  npi_dim {
   type: left_outer
   sql_on:  ${npi_member_reference.npi} = ${npi_dim.npi}
   and     ${npi_member_reference.yrmo} = ${npi_dim.yrmo};;
   relationship: many_to_one
 }
-
 join: date_month_dim {
   type: inner
   sql_on: ${npi_member_reference.yrmo} = ${date_month_dim.yrmo} ;;
   relationship: one_to_many
-
-
-
 }
 
 join: axial_admin_fact {
