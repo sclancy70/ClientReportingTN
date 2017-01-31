@@ -24,7 +24,7 @@ view: npi_fact {
 
   dimension: short_long_acting {
     type: string
-    sql: ${TABLE}.asshort_long_acting ;;
+    sql: ${TABLE}.asshort_long_acting ;; ##fix on table
   }
 
   dimension: diagnosis {
@@ -32,9 +32,9 @@ view: npi_fact {
     sql: ${TABLE}.diagnosis ;;
   }
 
-  dimension: does {
+  dimension: dose {
     type: string
-    sql: ${TABLE}.does ;;
+    sql: ${TABLE}.does ;; ##Fix on table
   }
 
   dimension: duration {
@@ -88,6 +88,7 @@ view: npi_fact {
   }
 
   dimension: npi {
+    hidden: yes
 
     type: string
     sql: ${TABLE}.npi ;;
@@ -133,40 +134,40 @@ view: npi_fact {
     sql: ${TABLE}.rim_report_flag ;;
   }
 
-  dimension: rim_score {
-    type: number
-    sql: ${TABLE}.rim_score ;;
-  }
+  #dimension: rim_score {
+   # type: number
+  #  sql: ${TABLE}.rim_score ;;
+  #}
 
-  dimension: script_length {
-    type: string
-    sql: ${TABLE}.script_length ;;
-  }
+  #dimension: script_length {
+  #  type: string
+  #  sql: ${TABLE}.script_length ;;
+  #}
 
-  dimension: sourced {
-    type: string
-    sql: ${TABLE}.sourced ;;
-  }
+  #dimension: sourced {
+  #  type: string
+   # sql: ${TABLE}.sourced ;;
+  #}
 
-  dimension: substance_abuse_disorder {
-    type: string
-    sql: ${TABLE}.substance_abuse_disorder ;;
-  }
+  #dimension: substance_abuse_disorder {
+  #  type: string
+   # sql: ${TABLE}.substance_abuse_disorder ;;
+  #}
 
   dimension: totalptcnt {
-    type: number
-    sql:${TABLE}.totalptcnt ;;
+   type: number
+   sql:cast (${TABLE}.totalptcnt as integer) ;;
   }
 
-  dimension: unreported_visits {
-    type: string
-    sql: ${TABLE}.unreported_visits ;;
-  }
+  #dimension: unreported_visits {
+  #  type: string
+  #  sql: ${TABLE}.unreported_visits ;;
+  #}
 
-  dimension: urinary_drug_screen {
-    type: string
-    sql: ${TABLE}.urinary_drug_screen ;;
-  }
+ # dimension: urinary_drug_screen {
+   # type: string
+  #  sql: ${TABLE}.urinary_drug_screen ;;
+  #}
 
   dimension: yrmo {
     hidden:  yes
