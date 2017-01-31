@@ -1,26 +1,9 @@
 view: patient_phi_dim {
-  derived_table: {
-    sql: SELECT
-      axial_member_id,
-      member_state,
-      member_zip,
-      member_city,
-      member_address1 member_address,
-      member_gender,
-      member_first_name,
-      member_last_name,
-      member_date_of_birth,
-      load_date,
-      row_number() over (partition by axial_member_id order by termination_date desc) primary_flag
-      FROM public.eligibility_cur
-
+  sql_table_name:reporting.patient_phi_dim
        ;;
-  }
 
-  measure: count {
-    type: count
-    drill_fields: [detail*]
-  }
+
+
 
   dimension: axial_member_id {
 
@@ -78,19 +61,5 @@ view: patient_phi_dim {
     sql: ${TABLE}.primary_flag ;;
   }
 
-  set: detail {
-    fields: [
-      axial_member_id,
-      member_state,
-      member_zip,
-      member_city,
-      member_address,
-      member_gender,
-      member_first_name,
-      member_last_name,
-      member_date_of_birth,
-      load_date,
-      primary_flag
-    ]
-  }
+
 }

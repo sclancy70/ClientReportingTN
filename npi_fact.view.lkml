@@ -188,7 +188,9 @@ view: npi_fact {
   }
 
   measure: count {
-    type: count
+    type: number
+    sql: count(*) ;;
+    value_format_name: decimal_0
     drill_fields: []
   }
 }

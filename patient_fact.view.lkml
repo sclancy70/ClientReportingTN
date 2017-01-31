@@ -22,7 +22,7 @@ view: patient_fact {
     sql: ${TABLE}.duration_label ;;
   }
 
-  dimension: effective_date {
+  dimension: coverage_effective_date {
     type: string
     sql: ${TABLE}.effective_date ;;
   }
@@ -37,57 +37,57 @@ view: patient_fact {
     sql: cast(${TABLE}.er_visits as integer) ;;
   }
 
-  dimension: has_behavioral {
+  dimension: behavioral_risk_flag {
     type: number
     sql: cast(${TABLE}.has_behavioral as integer) ;;
   }
 
-  dimension: has_comorbid {
+  dimension: comorbid_risk_flag {
     type: number
     sql: cast(${TABLE}.has_comorbid as integer) ;;
   }
 
-  dimension: has_duration {
+  dimension: duration_risk_flag {
     type: number
     sql: cast(${TABLE}.has_duration as integer) ;;
   }
 
-  dimension: has_ervisit {
+  dimension: ervisit_risk_flag {
     type: number
     sql: cast(${TABLE}.has_ervisit as integer) ;;
   }
 
-  dimension: has_highrisk {
+  dimension: highrisk_risk_flag {
     type: number
     sql: cast(${TABLE}.has_highrisk as integer);;
   }
 
-  dimension: has_meddrisk {
+  dimension: medd_risk_flag {
     type: number
     sql: cast( ${TABLE}.has_meddrisk as integer);;
   }
 
-  dimension: has_multipharmacy {
+  dimension: multipharmacy_risk_flag {
     type: number
     sql: cast(${TABLE}.has_multipharmacy as integer) ;;
   }
 
-  dimension: has_multiprescriber {
+  dimension: multiprescriber_risk_flag {
     type: number
     sql: cast(${TABLE}.has_multiprescriber as integer) ;;
   }
 
-  dimension: has_poly {
+  dimension: polydrug_risk_flag {
     type: number
     sql: cast( ${TABLE}.has_poly as integer);;
   }
 
-  dimension: has_sud {
+  dimension: sud_risk_flag {
     type: number
     sql: cast(${TABLE}.has_sud as integer);;
   }
 
-  dimension: has_unreported_visits {
+  dimension:unreported_visits_risk_flag {
     type: number
     sql: cast(${TABLE}.has_unreported_visits as integer);;
   }
@@ -104,7 +104,7 @@ view: patient_fact {
 
   dimension: is_opioid {
     type: number
-    sql: cast(${TABLE}.is_opioid as interger) ;;
+    sql: cast( ${TABLE}.is_opioid as integer) ;;
   }
 
   dimension: medd {
@@ -167,7 +167,7 @@ view: patient_fact {
     sql: ${TABLE}.reporting_yyyymm ;;
   }
 
-  dimension: termination_date {
+  dimension: coverage_termination_date {
     type: string
     sql: ${TABLE}.termination_date ;;
   }
@@ -183,6 +183,7 @@ view: patient_fact {
   }
 
   dimension: yrmo {
+    hidden: yes
     type: string
     sql: ${TABLE}.yrmo ;;
   }
@@ -197,101 +198,96 @@ view: patient_fact {
          when medd > 150 then '4: MEDD >150' else '0: No MEDD' end;;
   }
 
+######################################################   Measure  ##############################################
 
 
-
-
-
-#######   Measure  ##############################################
-
-
-measure: Count_Behavioral_Patients {
+measure: Distinct_Count_of_Behavioral_Patients {
        type: number
-       sql:count(distinct case when ${has_behavioral} = 1 then ${axial_member_id} end);;
+       sql:count(distinct case when ${behavioral_risk_flag} = 1 then ${axial_member_id} end);;
       value_format_name: decimal_0
       drill_fields: [axial_member_id]
 }
 
 
-  measure: Count_Comorbid_Patients {
+  measure: Distinct_Count_of_Comorbid_Patients {
     type: number
-    sql:count(distinct case when ${has_comorbid} = 1 then ${axial_member_id} end);;
+    sql:count(distinct case when ${comorbid_risk_flag} = 1 then ${axial_member_id} end);;
     value_format_name: decimal_0
     drill_fields: [axial_member_id]
   }
 
 
-  measure: Count_Duration_Patients {
+  measure: Distinct_Count_of_Duration_Patients {
     type: number
-    sql:count(distinct case when ${has_duration} = 1 then ${axial_member_id} end);;
+    sql:count(distinct case when ${duration_risk_flag} = 1 then ${axial_member_id} end);;
     value_format_name: decimal_0
     drill_fields: [axial_member_id]
   }
 
 
-  measure: Count_ERVisit_Patients {
+  measure: Distinct_Count_of_ERVisit_Patients {
     type: number
-    sql:count(distinct case when ${has_ervisit} = 1 then ${axial_member_id} end);;
+    sql:count(distinct case when ${ervisit_risk_flag} = 1 then ${axial_member_id} end);;
     value_format_name: decimal_0
     drill_fields: [axial_member_id]
   }
 
-  measure: Count_High_Risk_Patients {
+  measure: Distinct_Count_of_High_Risk_Patients {
     type: number
-    sql:count(distinct case when ${has_highrisk} = 1 then ${axial_member_id} end);;
-    value_format_name: decimal_0
-    drill_fields: [axial_member_id]
-  }
-
-
-  measure: Count_MEDD_Risk_Patients {
-    type: number
-    sql:count(distinct case when ${has_meddrisk} = 1 then ${axial_member_id} end);;
-    value_format_name: decimal_0
-    drill_fields: [axial_member_id]
-  }
-
-  measure: Count_Multi_Pharmacy_Patients {
-    type: number
-    sql:count(distinct case when ${has_multipharmacy} = 1 then ${axial_member_id} end);;
+    sql:count(distinct case when ${highrisk_risk_flag} = 1 then ${axial_member_id} end);;
     value_format_name: decimal_0
     drill_fields: [axial_member_id]
   }
 
 
-
-  measure: Count_Multi_Prescriber_Patients {
+  measure: Distinct_Count_of_MEDD_Risk_Patients {
     type: number
-    sql:count(distinct case when ${has_multiprescriber} = 1 then ${axial_member_id} end);;
+    sql:count(distinct case when ${medd_risk_flag}_risk_flag} = 1 then ${axial_member_id} end);;
+    value_format_name: decimal_0
+    drill_fields: [axial_member_id]
+  }
+
+  measure:Distinct_Count_of_Multi_Pharmacy_Patients {
+    type: number
+    sql:count(distinct case when ${multipharmacy_risk_flag} = 1 then ${axial_member_id} end);;
     value_format_name: decimal_0
     drill_fields: [axial_member_id]
   }
 
 
-  measure: Count_PolyDrug_Patients {
+
+  measure: Distinct_Count_of_Multi_Prescriber_Patients {
     type: number
-    sql:count(distinct case when ${has_poly} = 1 then ${axial_member_id} end);;
+    sql:count(distinct case when ${multiprescriber_risk_flag} = 1 then ${axial_member_id} end);;
     value_format_name: decimal_0
     drill_fields: [axial_member_id]
   }
 
 
-  measure: Count_SUD_Patients {
+  measure: Distinct_Count_of_PolyDrug_Patients {
     type: number
-    sql:count(distinct case when ${has_sud} = 1 then ${axial_member_id} end);;
-    value_format_name: decimal_0
-    drill_fields: [axial_member_id]
-  }
-
-  measure: Count_Unreported_Visits_Patients {
-    type: number
-    sql:count(distinct case when ${has_unreported_visits} = 1 then ${axial_member_id} end);;
+    sql:count(distinct case when ${polydrug_risk_flag} = 1 then ${axial_member_id} end);;
     value_format_name: decimal_0
     drill_fields: [axial_member_id]
   }
 
 
-  measure: Count_Pain_Patients {
+  measure:Distinct_Count_of_SUD_Patients {
+    type: number
+    sql:count(distinct case when ${sud_risk_flag} = 1 then ${axial_member_id} end);;
+    value_format_name: decimal_0
+    drill_fields: [axial_member_id]
+  }
+
+  measure: Distinct_Count_of_Unreported_Visits_Patients {
+    type: number
+    sql:count(distinct case when ${unreported_visits_risk_flag} = 1 then ${axial_member_id} end);;
+    value_format_name: decimal_0
+    drill_fields: [axial_member_id]
+  }
+
+
+  measure: Distinct_Count_of_Pain_Patients {
     type: number
     sql:count(distinct case when ${in_pain_dm} = 1 then ${axial_member_id} end);;
     value_format_name: decimal_0
@@ -299,13 +295,20 @@ measure: Count_Behavioral_Patients {
   }
 
 
-  measure: Count_Patients {
+  measure: Distinct_Count_of_Patients {
     type: number
     sql:count(distinct ${axial_member_id} );;
     value_format_name: decimal_0
     drill_fields: [axial_member_id,patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
   }
 
+
+  measure: Distinct_Count_of_Opioid_Patients {
+    type: number
+    sql:count(distinct case when ${is_opioid} = 1 then ${axial_member_id} end);;
+    value_format_name: decimal_0
+    drill_fields: [axial_member_id,patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
+  }
 
   measure: Total_Monthly_Spend {
     type: number
@@ -316,8 +319,9 @@ measure: Count_Behavioral_Patients {
 
 
 
-  measure: count {
-    type: count
+  measure: Count_of_Records {
+    type: number
+    sql: count(*) ;;
     drill_fields: []
   }
 }

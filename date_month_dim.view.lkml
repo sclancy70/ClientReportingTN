@@ -1,4 +1,4 @@
-view: date_month_dim {
+view: report_through_date_dim {
   sql_table_name: reporting.date_month_dim ;;
 
   dimension: fiscal_month {

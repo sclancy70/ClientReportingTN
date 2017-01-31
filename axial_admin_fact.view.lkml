@@ -39,16 +39,19 @@ view: axial_admin_fact {
   }
 
   dimension: provider_group_id {
+    hidden: yes
     type: string
     sql: ${TABLE}.provider_group_id ;;
   }
 
   dimension: provider_group_name {
+    hidden: yes
     type: string
     sql: ${TABLE}.provider_group_name ;;
   }
 
   dimension: provider_name {
+    hidden: yes
     type: string
     sql: ${TABLE}.provider_name ;;
   }

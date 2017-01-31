@@ -25,7 +25,7 @@ explore: npi_member_reference {
 
   join: patient_phi_dim {
     type:left_outer
-    sql_on:  ${npi_member_reference.axial_member_id} = ${patient_fact.axial_member_id} ;;
+    sql_on:  ${npi_member_reference.axial_member_id} = ${patient_phi_dim.axial_member_id}fact.axial_member_id} ;;
     relationship: many_to_many
   }
 
@@ -35,9 +35,9 @@ join:  npi_dim {
   and     ${npi_member_reference.yrmo} = ${npi_dim.yrmo};;
   relationship: many_to_one
 }
-join: date_month_dim {
+join: report_through_date_dim {
   type: inner
-  sql_on: ${npi_member_reference.yrmo} = ${date_month_dim.yrmo} ;;
+  sql_on: ${npi_member_reference.yrmo} = ${report_through_date_dim.yrmo} ;;
   relationship: one_to_many
 }
 

@@ -46,6 +46,7 @@ view: npi_member_reference {
   }
 
   measure: count {
+    hidden: yes
     type: count
     drill_fields: []
   }
