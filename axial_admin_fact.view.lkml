@@ -68,8 +68,9 @@ view: axial_admin_fact {
     sql: ${TABLE}.schedule_yrmo ;;
   }
 
-  measure: count {
-    type: count
+  measure: count_of_records {
+    type: number
+    sql:count (*);;
     drill_fields: [provider_name, provider_group_name]
   }
 }

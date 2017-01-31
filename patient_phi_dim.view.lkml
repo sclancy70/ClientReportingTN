@@ -1,6 +1,5 @@
 view: patient_phi_dim {
-  sql_table_name:reporting.patient_phi_dim
-       ;;
+  sql_table_name:reporting.patient_phi_dim ;;
 
 
 

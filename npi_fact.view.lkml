@@ -154,7 +154,7 @@ view: npi_fact {
 
   dimension: totalptcnt {
     type: number
-    sql: cast(${TABLE}.totalptcnt as integer);;
+    sql:${TABLE}.totalptcnt ;;
   }
 
   dimension: unreported_visits {
@@ -176,18 +176,18 @@ view: npi_fact {
 
   measure: Distinct_NPI_Count {
     type: number
-    sql: count(distinct ${npi}} ;;
+    sql: count(distinct ${npi} ;;
     drill_fields: []
   }
 
 
   measure: Total_Patient_count {
     type: number
-    sql: sum(distinct ${totalptcnt}} ;;
+    sql: sum(distinct ${totalptcnt} ;;
     drill_fields: []
   }
 
-  measure: count {
+  measure: count_of_records {
     type: number
     sql: count(*) ;;
     value_format_name: decimal_0
