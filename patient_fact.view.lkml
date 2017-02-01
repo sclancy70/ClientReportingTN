@@ -259,7 +259,7 @@ measure: Distinct_Count_of_Behavioral_Patients {
 
   measure: Distinct_Count_of_MEDD_Risk_Patients {
     type: number
-    sql:count(distinct case when ${medd_risk_flag}_risk_flag} = 1 then ${axial_member_id} end);;
+    sql:count(distinct case when ${medd_risk_flag}= 1 then ${axial_member_id} end);;
     value_format_name: decimal_0
     drill_fields: [axial_member_id]
   }
