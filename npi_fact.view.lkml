@@ -176,7 +176,7 @@ view: npi_fact {
   }
 ##################################   Measure  ##############################################
 
-  measure: Distinct_NPI_Count {
+  measure: Distinct_Count_of_NPI {
     type: number
     sql: count(distinct ${npi}) ;;
     value_format_name:decimal_0
