@@ -16,7 +16,7 @@ view: patient_phi_dim {
   }
 
   dimension: member_zip {
-    type: string
+    type: zipcode
     sql: ${TABLE}.member_zip ;;
   }
 

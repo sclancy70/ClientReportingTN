@@ -209,10 +209,10 @@ view: patient_fact {
   dimension: medd_label_order{
     type: string
     sql:
-      Case when medd between 0 and 49 then '1: MEDD < 50'
-         when medd between 50 and 100 then '2: MEDD 50 - 100'
-         when medd between 101 and 150 then '3: MEDD 101 - 150'
-         when medd > 150 then '4: MEDD >150' else '0: No MEDD' end;;
+      Case when ${medd}between 0 and 49 then '1: MEDD < 50'
+         when ${medd} between 50 and 100 then '2: MEDD 50 - 100'
+         when ${medd} between 101 and 150 then '3: MEDD 101 - 150'
+         when ${medd} > 150 then '4: MEDD >150' else '0: No MEDD' end;;
   }
 
 ######################################################   Measure  ##############################################

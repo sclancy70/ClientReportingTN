@@ -38,7 +38,7 @@ view: npi_dim {
   }
 
   dimension: provider_zip {
-    type: string
+    type: zipcode
     sql: ${TABLE}.provider_zip ;;
   }
 
