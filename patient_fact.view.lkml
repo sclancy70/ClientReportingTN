@@ -335,6 +335,20 @@ measure: Distinct_Count_of_Behavioral_Patients {
   }
 
 
+  measure: Distinct_Count_of_Medd_Patients {
+    type: number
+    sql:Count(case when ${medd} is not null then ${axial_member_id} end );;
+    value_format_name: decimal_0
+    drill_fields: [patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
+  }
+
+  measure: Average_MEDD {
+    type: number
+    sql:sum(${medd})/${Distinct_Count_of_Medd_Patients};;
+    value_format_name: decimal_0
+    drill_fields: [patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
+  }
+
 
   measure: Count_of_Records {
     type: number

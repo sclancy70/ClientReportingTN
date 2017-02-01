@@ -36,6 +36,11 @@ view: report_through_date_dim {
     sql: ${TABLE}.quarter ;;
   }
 
+  dimension: quarter_year {
+    type: string
+    sql:  'Q'||${TABLE}.quarter||'-'||${TABLE}.year ;;
+  }
+
   dimension: year {
     type: string
     sql: ${TABLE}.year ;;
