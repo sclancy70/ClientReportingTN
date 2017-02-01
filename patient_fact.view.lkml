@@ -2,7 +2,7 @@ view: patient_fact {
   sql_table_name: reporting.patient_fact ;;
 
   dimension: axial_member_id {
-
+    hidden: yes
     type: string
     sql: ${TABLE}.axial_member_id ;;
   }
@@ -222,7 +222,7 @@ measure: Distinct_Count_of_Behavioral_Patients {
        type: number
        sql:count(distinct case when ${behavioral_risk_flag} = 1 then ${axial_member_id} end);;
       value_format_name: decimal_0
-      drill_fields: [axial_member_id]
+      drill_fields: [patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
 }
 
 
@@ -230,7 +230,7 @@ measure: Distinct_Count_of_Behavioral_Patients {
     type: number
     sql:count(distinct case when ${comorbid_risk_flag} = 1 then ${axial_member_id} end);;
     value_format_name: decimal_0
-    drill_fields: [axial_member_id]
+    drill_fields: [patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
   }
 
 
@@ -238,7 +238,7 @@ measure: Distinct_Count_of_Behavioral_Patients {
     type: number
     sql:count(distinct case when ${duration_risk_flag} = 1 then ${axial_member_id} end);;
     value_format_name: decimal_0
-    drill_fields: [axial_member_id]
+    drill_fields: [patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
   }
 
 
@@ -246,14 +246,14 @@ measure: Distinct_Count_of_Behavioral_Patients {
     type: number
     sql:count(distinct case when ${ervisit_risk_flag} = 1 then ${axial_member_id} end);;
     value_format_name: decimal_0
-    drill_fields: [axial_member_id]
+    drill_fields: [patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
   }
 
   measure: Distinct_Count_of_High_Risk_Patients {
     type: number
     sql:count(distinct case when ${highrisk_risk_flag} = 1 then ${axial_member_id} end);;
     value_format_name: decimal_0
-    drill_fields: [axial_member_id]
+    drill_fields: [patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
   }
 
 
@@ -261,14 +261,14 @@ measure: Distinct_Count_of_Behavioral_Patients {
     type: number
     sql:count(distinct case when ${medd_risk_flag}= 1 then ${axial_member_id} end);;
     value_format_name: decimal_0
-    drill_fields: [axial_member_id]
+    drill_fields: [patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
   }
 
   measure:Distinct_Count_of_Multi_Pharmacy_Patients {
     type: number
     sql:count(distinct case when ${multipharmacy_risk_flag} = 1 then ${axial_member_id} end);;
     value_format_name: decimal_0
-    drill_fields: [axial_member_id]
+    drill_fields:[patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
   }
 
 
@@ -277,7 +277,7 @@ measure: Distinct_Count_of_Behavioral_Patients {
     type: number
     sql:count(distinct case when ${multiprescriber_risk_flag} = 1 then ${axial_member_id} end);;
     value_format_name: decimal_0
-    drill_fields: [axial_member_id]
+    drill_fields: [patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
   }
 
 
@@ -285,7 +285,7 @@ measure: Distinct_Count_of_Behavioral_Patients {
     type: number
     sql:count(distinct case when ${polydrug_risk_flag} = 1 then ${axial_member_id} end);;
     value_format_name: decimal_0
-    drill_fields: [axial_member_id]
+    drill_fields: [patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
   }
 
 
@@ -293,14 +293,14 @@ measure: Distinct_Count_of_Behavioral_Patients {
     type: number
     sql:count(distinct case when ${sud_risk_flag} = 1 then ${axial_member_id} end);;
     value_format_name: decimal_0
-    drill_fields: [axial_member_id]
+    drill_fields: [patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
   }
 
   measure: Distinct_Count_of_Unreported_Visits_Patients {
     type: number
     sql:count(distinct case when ${unreported_visits_risk_flag} = 1 then ${axial_member_id} end);;
     value_format_name: decimal_0
-    drill_fields: [axial_member_id]
+    drill_fields: [patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
   }
 
 
@@ -316,7 +316,7 @@ measure: Distinct_Count_of_Behavioral_Patients {
     type: number
     sql:count(distinct ${axial_member_id} );;
     value_format_name: decimal_0
-    drill_fields: [axial_member_id,patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
+    drill_fields: [patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
   }
 
 
@@ -324,14 +324,14 @@ measure: Distinct_Count_of_Behavioral_Patients {
     type: number
     sql:count(distinct case when ${is_opioid} = 1 then ${axial_member_id} end);;
     value_format_name: decimal_0
-    drill_fields: [axial_member_id,patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
+    drill_fields: [patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
   }
 
   measure: Total_Monthly_Spend {
     type: number
     sql:sum(${monthly_spend});;
     value_format_name: decimal_0
-    drill_fields: [axial_member_id]
+    drill_fields: [patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
   }
 
 
@@ -339,6 +339,6 @@ measure: Distinct_Count_of_Behavioral_Patients {
   measure: Count_of_Records {
     type: number
     sql: count(*) ;;
-    drill_fields: []
+    drill_fields: [patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
   }
 }

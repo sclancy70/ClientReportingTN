@@ -179,20 +179,22 @@ view: npi_fact {
   measure: Distinct_NPI_Count {
     type: number
     sql: count(distinct ${npi}) ;;
-    drill_fields: []
+    value_format_name:decimal_0
+    drill_fields: [npi_dim.npi,npi_dim.provider_name,npi_dim.provider_zip]
   }
 
 
   measure: Total_Patient_count {
     type: number
     sql: sum(distinct ${totalptcnt}) ;;
-    drill_fields: []
+    value_format_name:decimal_0
+    drill_fields: [npi_dim.npi,npi_dim.provider_name,npi_dim.provider_zip]
   }
 
   measure: count_of_records {
     type: number
     sql: count(*) ;;
-    value_format_name: decimal_0
-    drill_fields: []
+    value_format_name:decimal_0
+    drill_fields: [npi_dim.npi,npi_dim.provider_name,npi_dim.provider_zip]
   }
 }

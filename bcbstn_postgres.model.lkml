@@ -25,7 +25,7 @@ explore: npi_member_reference {
 
   join: patient_phi_dim {
     type:left_outer
-    sql_on:  ${npi_member_reference.axial_member_id} = ${patient_phi_dim.axial_member_id}fact.axial_member_id} ;;
+    sql_on:  ${npi_member_reference.axial_member_id} = ${patient_phi_dim.axial_member_id} ;;
     relationship: many_to_many
   }
 
