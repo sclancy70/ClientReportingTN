@@ -330,7 +330,7 @@ measure: Distinct_Count_of_Behavioral_Patients {
   measure: Total_Monthly_Spend {
     type: number
     sql:sum(${monthly_spend});;
-    value_format_name: decimal_0
+    value_format_name: usd_0
     drill_fields: [patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
   }
 

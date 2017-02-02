@@ -22,50 +22,51 @@ view: npi_fact {
     sql: ${TABLE}.app_score_raw  ;;
   }
 
-  dimension: short_long_acting {
-    type: string
-    sql: ${TABLE}.asshort_long_acting ;; ##fix on table
-  }
+  #dimension: short_long_acting {
+   # type: string
+  #  sql: ${TABLE}.asshort_long_acting ;; ##fix on table
+  #}
 
-  dimension: diagnosis {
-    type: string
-    sql: ${TABLE}.diagnosis ;;
-  }
+  #dimension: diagnosis {
+   # type: string
+  #  sql: ${TABLE}.diagnosis ;;
+  #}
 
-  dimension: dose {
-    type: string
-    sql: ${TABLE}.does ;; ##Fix on table
-  }
+ # dimension: dose {
+  #  type: string
+  #  sql: ${TABLE}.does ;; ##Fix on table
+  #
 
-  dimension: duration {
-    type: string
-    sql: ${TABLE}.duration ;;
-  }
 
-  dimension: early_refill {
-    type: string
-    sql: ${TABLE}.early_refill ;;
-  }
+  #dimension: duration {
+   # type: string
+   # sql: ${TABLE}.duration ;;
+  #}
 
-  dimension: er_visits {
-    type: string
-    sql: ${TABLE}.er_visits ;;
-  }
+  #dimension: early_refill {
+  #  type: string
+   # sql: ${TABLE}.early_refill ;;
+  #}
 
-  dimension: full_tappered {
-    type: string
-    sql: ${TABLE}.full_tappered ;;
-  }
+  #dimension: er_visits {
+   # type: string
+  #  sql: ${TABLE}.er_visits ;;
+  #}
 
-  dimension: methadone_ekg {
-    type: string
-    sql: ${TABLE}.methadone_ekg ;;
-  }
+  #dimension: full_tappered {
+   # type: string
+  #  sql: ${TABLE}.full_tappered ;;
+  #}
 
-  dimension: multi_pharmacy {
-    type: string
-    sql: ${TABLE}.multi_pharmacy ;;
-  }
+ # dimension: methadone_ekg {
+   # type: string
+   # sql: ${TABLE}.methadone_ekg ;;
+  #}
+
+ # dimension: multi_pharmacy {
+   # type: string
+   # sql: ${TABLE}.multi_pharmacy ;;
+  #}
 
   #dimension: multiprescriber {
    # type: string
@@ -94,10 +95,10 @@ view: npi_fact {
     sql: ${TABLE}.npi ;;
   }
 
-  dimension: opioid_panel_size {
-    type: string
-    sql: ${TABLE}.opioid_panel_size ;;
-  }
+  #dimension: opioid_panel_size {
+#    type: string
+ #   sql: ${TABLE}.opioid_panel_size ;;
+  #}
 
   dimension: opioidptcnt {
     type: string
@@ -109,25 +110,26 @@ view: npi_fact {
     sql: ${TABLE}.peer_group ;;
   }
 
+  #######################
   dimension: percentile_category {
-    type: number
-    sql: cast( ${TABLE}.percentile_category as integer) ;;
+    type: string
+    sql:  ${TABLE}.percentile_category ;;
   }
 
-  dimension: poly_critical {
-    type: string
-    sql: ${TABLE}.poly_critical ;;
-  }
+  #dimension: poly_critical {
+  #  type: string
+  #  sql: ${TABLE}.poly_critical ;;
+  #}
 
-  dimension: polydrug {
-    type: string
-    sql: ${TABLE}.polydrug ;;
-  }
+  #dimension: polydrug {
+  #  type: string
+  #  sql: ${TABLE}.polydrug ;;
+ # }
 
-  dimension: pregnacy {
-    type: string
-    sql: ${TABLE}.pregnacy ;;
-  }
+  #dimension: pregnacy {
+  #  type: string
+  #  sql: ${TABLE}.pregnacy ;;
+  #}
 
   dimension: rim_report_flag {
     type: string
@@ -155,9 +157,9 @@ view: npi_fact {
   #}
 
   dimension: totalptcnt {
-   type: number
+  type: number
    sql:cast (${TABLE}.totalptcnt as integer) ;;
-  }
+ }
 
   #dimension: unreported_visits {
   #  type: string
