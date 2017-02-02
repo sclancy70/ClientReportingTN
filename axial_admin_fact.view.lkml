@@ -74,7 +74,7 @@ view: axial_admin_fact {
 
 
 
-  measure: distinct_count_of_records {
+  measure: distinct_count_of_engaged_npi {
     type: number
     sql:count (distinct ${TABLE}.npi);;
     drill_fields: [provider_name, provider_group_name]

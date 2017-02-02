@@ -74,11 +74,13 @@ view: npi_fact {
   #}
 
   dimension: ndccnt {
+    hidden: yes
     type: string
     sql: ${TABLE}.ndccnt ;;
   }
 
   dimension: ndcperpt {
+    hidden:  yes
     type: string
     sql: ${TABLE}.ndcperpt ;;
   }
@@ -101,6 +103,7 @@ view: npi_fact {
   #}
 
   dimension: opioidptcnt {
+    hidden:  yes
     type: string
     sql: ${TABLE}.opioidptcnt ;;
   }
@@ -156,7 +159,8 @@ view: npi_fact {
    # sql: ${TABLE}.substance_abuse_disorder ;;
   #}
 
-  dimension: totalptcnt {
+  dimension: totalptcnt    {
+    hidden: yes
   type: number
    sql:cast (${TABLE}.totalptcnt as integer) ;;
  }
@@ -176,24 +180,42 @@ view: npi_fact {
     type: string
     sql: ${TABLE}.yrmo ;;
   }
-##################################   Measure  ##############################################
+####################################################     Measure      ##################################################
 
-  measure: Distinct_Count_of_NPI {
+  measure: Distinct_Count_of_NPI
+
+  {
     type: number
     sql: count(distinct ${npi}) ;;
     value_format_name:decimal_0
     drill_fields: [npi_dim.npi,npi_dim.provider_name,npi_dim.provider_zip]
   }
 
-
-  measure: Total_Patient_count {
+  measure:  Distinct_Count_of_NPI_Patients{
     type: number
     sql: sum(distinct ${totalptcnt}) ;;
     value_format_name:decimal_0
     drill_fields: [npi_dim.npi,npi_dim.provider_name,npi_dim.provider_zip]
   }
 
-  measure: count_of_records {
+  measure:  Distinct_Count_of_NPI_Opioid_Patients{
+    type: number
+    sql: sum(distinct ${opioidptcnt}) ;;
+    value_format_name:decimal_0
+    drill_fields: [npi_dim.npi,npi_dim.provider_name,npi_dim.provider_zip]
+  }
+
+
+  measure:  Count_of_NPI_Prescriptions {
+    type: number
+    sql: sum(distinct ${ndccnt}) ;;
+    value_format_name:decimal_0
+    drill_fields: [npi_dim.npi,npi_dim.provider_name,npi_dim.provider_zip]
+  }
+
+
+
+  measure: Count_Of_Records {
     type: number
     sql: count(*) ;;
     value_format_name:decimal_0

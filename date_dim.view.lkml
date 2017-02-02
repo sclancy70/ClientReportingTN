@@ -121,6 +121,23 @@ view: date_dim {
     sql: ${TABLE}.yrmo ;;
   }
 
+  #####################################
+  dimension_group: report_through_date {
+    type: time
+    timeframes: [date, week, month,month_name,quarter_of_year]
+    convert_tz: no
+    sql: ${TABLE}.full_date ;;
+  }
+
+
+
+
+
+
+
+
+
+
   measure: count {
     type: count
     drill_fields: [day_name, month_name]

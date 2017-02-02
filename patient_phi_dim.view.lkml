@@ -1,9 +1,6 @@
 view: patient_phi_dim {
   sql_table_name:reporting.patient_phi_dim ;;
 
-
-
-
   dimension: axial_member_id {
 
     type: number
@@ -56,6 +53,7 @@ view: patient_phi_dim {
   }
 
   dimension: primary_flag {
+    hidden: yes
     type: number
     sql: ${TABLE}.primary_flag ;;
   }

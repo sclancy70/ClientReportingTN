@@ -28,9 +28,6 @@ view: patient_fact {
     sql: cast( ${TABLE}.effective_date as date) ;;
   }
 
-
-
-
   dimension_group: coverage_effective_date {
     type: time
     timeframes: [date, week, month, year]
@@ -109,17 +106,17 @@ view: patient_fact {
     sql: cast(${TABLE}.has_unreported_visits as integer);;
   }
 
-  dimension: in_pain_dm {
+  dimension: in_pain_flag {
     type: string
     sql: cast(${TABLE}.in_pain_dm  as integer);;
   }
 
-  dimension: in_rx_claims {
+  dimension: in_rx_claims_flag {
     type: number
     sql: cast(${TABLE}.in_rx_claims as interger) ;;
   }
 
-  dimension: is_opioid {
+  dimension: opioid_flag {
     type: number
     sql: cast( ${TABLE}.is_opioid as integer) ;;
   }
@@ -180,6 +177,7 @@ view: patient_fact {
   }
 
   dimension: reporting_yyyymm {
+    hidden: yes
     type: string
     sql: ${TABLE}.reporting_yyyymm ;;
   }
@@ -306,7 +304,7 @@ measure: Distinct_Count_of_Behavioral_Patients {
 
   measure: Distinct_Count_of_Pain_Patients {
     type: number
-    sql:count(distinct case when ${in_pain_dm} = 1 then ${axial_member_id} end);;
+    sql:count(distinct case when ${in_pain_flag} = 1 then ${axial_member_id} end);;
     value_format_name: decimal_0
     drill_fields: [axial_member_id,patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
   }
@@ -322,7 +320,7 @@ measure: Distinct_Count_of_Behavioral_Patients {
 
   measure: Distinct_Count_of_Opioid_Patients {
     type: number
-    sql:count(distinct case when ${is_opioid} = 1 then ${axial_member_id} end);;
+    sql:count(distinct case when ${opioid_flag} = 1 then ${axial_member_id} end);;
     value_format_name: decimal_0
     drill_fields: [patient_phi_dim.axial_member_id,patient_phi_dim.member_address, patient_phi_dim.member_state, patient_phi_dim.member_city, patient_phi_dim.member_zip ]
   }
