@@ -139,10 +139,10 @@ view: npi_fact {
     sql: ${TABLE}.rim_report_flag ;;
   }
 
-  #dimension: rim_score {
-   # type: number
-  #  sql: ${TABLE}.rim_score ;;
-  #}
+  dimension: rim_score {
+   type: number
+   sql: ${TABLE}.rim_score ;;
+  }
 
   #dimension: script_length {
   #  type: string
